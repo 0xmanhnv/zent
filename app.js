@@ -8,13 +8,14 @@ var port = process.env.PORT || 8080;
 // var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 app.use(logger('dev'));
+//set use body parser de post
 app.use(bodyParser.json());
-
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-var server = require('http').Server(app);
 
+// khoi tao server
+var server = require('http').Server(app);
 
 app.get('/', (req, res) => {
   res.send("Home page. Server running okay.");
@@ -40,8 +41,13 @@ app.post('/webhook',function(req, res) {
         // If user send text
         if (message.message.text) {
           var text = message.message.text;
-          console.log(text); // In tin nhắn người dùng
-          sendMessage(senderId, "Tui là bot đây: " + text);
+          // In tin nhắn người dùng
+          // console.log(text); 
+          if(text == "hi"){
+          	sendMessage(senderId, "hihi ccccccc");
+          }else{
+          	sendMessage(senderId, "Tui là bot đây: " + text);
+          }
         }
       }
     }
