@@ -19,7 +19,7 @@ app.get('/webhook', function(req, res) {
 });
 
 // Xử lý khi có người nhắn tin cho bot
-app.post('/webhook', function(req, res) {
+app.post('/webhook', urlencodedParser ,function(req, res) {
   var entries = req.body.entry;
   for (var entry of entries) {
     var messaging = entry.messaging;
