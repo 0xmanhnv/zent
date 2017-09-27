@@ -46,7 +46,7 @@ app.post('/webhook',function(req, res) {
           if(text == "hi"){
           	sendMessage(senderId, "hihi ccccccc");
           }else{
-          	sendMessage(senderId, "Tui là bot đây: " + text);
+          	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
           }
         }
       }
