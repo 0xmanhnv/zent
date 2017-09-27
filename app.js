@@ -4,6 +4,7 @@ var request = require("request");
 var app = express();
 var port = process.env.PORT || 8080;
 var server = require('http').Server(app);
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 
 
