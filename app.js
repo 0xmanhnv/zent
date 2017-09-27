@@ -18,23 +18,25 @@ app.get('/webhook', function(req, res) {
   res.send('Error, wrong validation token');
 });
 
-// khi co nguoi nhan tin cho post
-app.post('/webhook', function(req, res){
-	var entries = req.body.entry;
-	for(var entry of entries){
-		var messaging = entry.messaging;
-		for(var message of messaging){
-			var senderId = message.sender.id;
+// Xử lý khi có người nhắn tin cho bot
+app.post('/webhook', function(req, res) {
+  var entries = req.body.entry;
+  for (var entry of entries) {
+    var messaging = entry.messaging;
+    for (var message of messaging) {
+      var senderId = message.sender.id;
+      if (message.message) {
+        // If user send text
+        if (message.message.text) {
+          var text = message.message.text;
+          console.log(text); // In tin nhắn người dùng
+          sendMessage(senderId, "Tui là bot đây: " + text);
+        }
+      }
+    }
+  }
 
-			if(message.message.text){
-				var text = message.message.text;
-				console.log(text);
-				sendMessage(senderId, "bot day");
-			}
-		}
-	}
-
-	res.status(200).send("OK");
+  res.status(200).send("OK");
 });
 
 // Gửi thông tin tới REST API để trả lời
