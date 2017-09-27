@@ -1,11 +1,19 @@
+var logger = require('morgan');
 var express = require("express");
 var bodyParser = require("body-parser");
 var request = require("request");
 var app = express();
 var port = process.env.PORT || 8080;
-var server = require('http').Server(app);
-var urlencodedParser = bodyParser.urlencoded({extended: false});
 
+// var urlencodedParser = bodyParser.urlencoded({extended: false});
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+var server = require('http').Server(app);
 
 
 app.get('/', (req, res) => {
@@ -20,25 +28,24 @@ app.get('/webhook', function(req, res) {
 });
 
 // Xử lý khi có người nhắn tin cho bot
-app.post('/webhook', urlencodedParser ,function(req, res) {
-	var id = "100004067117030";
-	sendMessage(id, "Tui là bot đây:");
+app.post('/webhook',function(req, res) {
 
-  // var entries = req.body.entry;
-  // for (var entry of entries) {
-  //   var messaging = entry.messaging;
-  //   for (var message of messaging) {
-  //     var senderId = message.sender.id;
-  //     if (message.message) {
-  //       // If user send text
-  //       if (message.message.text) {
-  //         var text = message.message.text;
-  //         console.log(text); // In tin nhắn người dùng
-  //         sendMessage(senderId, "Tui là bot đây: " + text);
-  //       }
-  //     }
-  //   }
-  // }
+
+  var entries = req.body.entry;
+  for (var entry of entries) {
+    var messaging = entry.messaging;
+    for (var message of messaging) {
+      var senderId = message.sender.id;
+      if (message.message) {
+        // If user send text
+        if (message.message.text) {
+          var text = message.message.text;
+          console.log(text); // In tin nhắn người dùng
+          sendMessage(senderId, "Tui là bot đây: " + text);
+        }
+      }
+    }
+  }
 
   res.status(200).send("OK");
 });
