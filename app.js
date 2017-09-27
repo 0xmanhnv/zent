@@ -44,7 +44,7 @@ app.post('/webhook',function(req, res) {
           // In tin nhắn người dùng
           // console.log(text); 
           if(text == "hi"){
-          	sendMessage(senderId, "hihi ccccccc");
+          	sendMessage(senderId, "Cảm ơn bạn đã nhắn tin cho chúng tôi , chúng tôi sẽ cố gắng liên hệ lại cho bạn sớm nhất có thể!");
           }else{
           	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
           }
