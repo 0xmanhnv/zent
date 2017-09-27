@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({
 var server = require('http').Server(app);
 
 app.get('/', (req, res) => {
+	sendMessage("100004067117030", "gui tu dong");
   res.send("Home page. Server running okay.");
 });
 
