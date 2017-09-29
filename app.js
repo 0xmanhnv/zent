@@ -45,7 +45,7 @@ app.post('/webhook',function(req, res) {
           // In tin nhắn người dùng
           // console.log(text); 
           if(text.indexOf("khoa hoc") != -1){
-          	sendKhoaHoc(senderId, "http://zent.edu.vn/khoa-hoc/");
+          	sendMessage(senderId, "http://zent.edu.vn/khoa-hoc/");
           }else{
           	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
           }
