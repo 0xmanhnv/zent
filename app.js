@@ -113,14 +113,7 @@ function sendMessage(senderId, message) {
         id: senderId
       },
       message: {
-        text: message,
-        "attachment": {
-          "type": "template",
-          "payload": {
-            "url": "http://zent.edu.vn/khoa-hoc/",
-            "is_reusable": true
-          }
-        }
+        text: message
       },
     }
   });
