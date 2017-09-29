@@ -76,14 +76,11 @@ app.post('/webhook',function(req, res) {
 //           {
 //             "content_type":"text",
 //             "title":"java",
-//             "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
+//             "payload":"<POSTBACK_PAYLOAD>",
 //             "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
 //           },
 //           {
 //             "content_type":"text"
-//             "title":"PHP + LARAVEL",
-//             "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
-//             "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
 //           },
 //           {
 //             "content_type":"text",
@@ -113,7 +110,23 @@ function sendMessage(senderId, message) {
         id: senderId
       },
       message: {
-        text: message
+        text: message,
+        "quick_replies":[
+          {
+            "content_type":"text",
+            "title":"java",
+            "payload":"<POSTBACK_PAYLOAD>",
+            "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
+          },
+          {
+            "content_type":"text"
+          },
+          {
+            "content_type":"text",
+            "title":"C++",
+            "payload":"<POSTBACK_PAYLOAD>"
+          }
+        ]
       },
     }
   });
