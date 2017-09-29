@@ -44,9 +44,9 @@ app.post('/webhook',function(req, res) {
           var text = message.message.text;
           // In tin nhắn người dùng
           // console.log(text); 
-          if(text.indexOf("khoa hoc") != -1){
+          if(text.indexOf("khoa hoc") != -1 || text.indexOf("khóa học") != -1){
             // sendKhoaHoc(senderId, "dfd");
-          	sendMessage(senderId, "http://zent.edu.vn/khoa-hoc/");
+          	sendMessage(senderId, "Hiện tại Zent có những khóa học như sau");
           }else{
           	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
           }
@@ -59,40 +59,6 @@ app.post('/webhook',function(req, res) {
 });
 
 
-// function sendKhoaHoc(senderId, message){
-//     request({
-//     url: 'https://graph.facebook.com/v2.6/me/messages',
-//     qs: {
-//       access_token: "EAABqFngJfVgBAFKJKQ0IQdITNSgHMnVuiwG74Ayg1cokgwZCGkigCf5FiFNTaHEdlod4kUCbg5e0lq0m7fK6tsrZAlLYddR1X854XZAXgt1M6CttPXZBvQtTdgd6HoGOeRwWphebKXiGXWCx5M0B3kh5ZAMPU5EeJAyn6quo6HlUGJX4f45Rd",
-//     },
-//     method: 'POST',
-//     json: {
-//       recipient: {
-//         id: senderId
-//       },
-//       message: {
-//         text: message,
-//         "quick_replies":[
-//           {
-//             "content_type":"text",
-//             "title":"java",
-//             "payload":"<POSTBACK_PAYLOAD>",
-//             "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
-//           },
-//           {
-//             "content_type":"text"
-//           },
-//           {
-//             "content_type":"text",
-//             "title":"C++",
-//             "payload":"<POSTBACK_PAYLOAD>"
-//           }
-//         ]
-//       },
-//     }
-//   });
-// }
-// Gửi thông tin tới REST API để trả lời
 
 
 
@@ -114,16 +80,19 @@ function sendMessage(senderId, message) {
         "quick_replies":[
           {
             "content_type":"text",
-            "title":"Search",
+            "title":"Java",
             "payload":"<POSTBACK_PAYLOAD>",
-            "image_url":"http://example.com/img/red.png"
-          },
-          {
-            "content_type":"location"
+            "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
           },
           {
             "content_type":"text",
-            "title":"Something Else",
+            "title":"C++",
+            "payload":"<POSTBACK_PAYLOAD>",
+            "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
+          },
+          {
+            "content_type":"text",
+            "title":"Laravel + php",
             "payload":"<POSTBACK_PAYLOAD>"
           }
         ]
