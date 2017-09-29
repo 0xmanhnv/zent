@@ -44,7 +44,8 @@ app.post('/webhook',function(req, res) {
           var text = message.message.text;
           // In tin nhắn người dùng
           // console.log(text); 
-          if(text.toUpperCase().indexOf("KHOA HOA") != -1 || text.toUpperCase().indexOf("KHÓA HỌC") != -1){
+          var textUpcase = text.toUpperCase();
+          if(textUpcase.indexOf("KHOA HOC") != -1 || textUpcase.indexOf("KHÓA HỌC") != -1){
           	sendKhoaHoc(senderId, "Hiện tại Zent có những khóa học như sau");
           }else{
           	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
