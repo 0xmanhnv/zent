@@ -70,7 +70,14 @@ function sendMessage(senderId, message) {
         id: senderId
       },
       message: {
-        text: message
+        text: message,
+        "attachments":[
+        {
+          "type":"fallback",
+          "payload":null,
+          "title":"<TITLE_OF_THE_URL_ATTACHMENT>",
+          "URL":"http://zent.edu.vn/khoa-hoc/",
+        }]
       },
     }
   });
