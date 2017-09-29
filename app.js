@@ -45,8 +45,7 @@ app.post('/webhook',function(req, res) {
           // In tin nhắn người dùng
           // console.log(text); 
           if(text.indexOf("khoa hoc") != -1 || text.indexOf("khóa học") != -1){
-            // sendKhoaHoc(senderId, "dfd");
-          	sendMessage(senderId, "Hiện tại Zent có những khóa học như sau");
+          	sendKhoaHoc(senderId, "Hiện tại Zent có những khóa học như sau");
           }else{
           	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
           }
@@ -65,6 +64,26 @@ app.post('/webhook',function(req, res) {
 
 function sendMessage(senderId, message) {
 
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {
+      access_token: "EAABqFngJfVgBAFKJKQ0IQdITNSgHMnVuiwG74Ayg1cokgwZCGkigCf5FiFNTaHEdlod4kUCbg5e0lq0m7fK6tsrZAlLYddR1X854XZAXgt1M6CttPXZBvQtTdgd6HoGOeRwWphebKXiGXWCx5M0B3kh5ZAMPU5EeJAyn6quo6HlUGJX4f45Rd",
+    },
+    method: 'POST',
+    json: {
+      recipient: {
+        id: senderId
+      },
+      message: {
+        text: message
+      },
+    }
+  });
+}
+
+
+// gui khoa hoc
+function sendKhoaHoc(senderId, message){
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
     qs: {
@@ -100,7 +119,6 @@ function sendMessage(senderId, message) {
     }
   });
 }
-
 
 
 //  lang nghe ket noi
