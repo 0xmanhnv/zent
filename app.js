@@ -45,7 +45,7 @@ app.post('/webhook',function(req, res) {
           // In tin nhắn người dùng
           // console.log(text); 
           if(text.indexOf("khoa hoc") != -1){
-            sendKhoaHoc(senderId, "dfd");
+            // sendKhoaHoc(senderId, "dfd");
           	sendMessage(senderId, "http://zent.edu.vn/khoa-hoc/");
           }else{
           	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
@@ -59,42 +59,42 @@ app.post('/webhook',function(req, res) {
 });
 
 
-function sendKhoaHoc(senderId, message){
-    request({
-    url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {
-      access_token: "EAABqFngJfVgBAFKJKQ0IQdITNSgHMnVuiwG74Ayg1cokgwZCGkigCf5FiFNTaHEdlod4kUCbg5e0lq0m7fK6tsrZAlLYddR1X854XZAXgt1M6CttPXZBvQtTdgd6HoGOeRwWphebKXiGXWCx5M0B3kh5ZAMPU5EeJAyn6quo6HlUGJX4f45Rd",
-    },
-    method: 'POST',
-    json: {
-      recipient: {
-        id: senderId
-      },
-      message: {
-        text: message,
-        "quick_replies":[
-          {
-            "content_type":"text",
-            "title":"java",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
-            "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
-          },
-          {
-            "content_type":"text"
-            "title":"PHP + LARAVEL",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
-            "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
-          },
-          {
-            "content_type":"text",
-            "title":"C++",
-            "payload":"<POSTBACK_PAYLOAD>"
-          }
-        ]
-      },
-    }
-  });
-}
+// function sendKhoaHoc(senderId, message){
+//     request({
+//     url: 'https://graph.facebook.com/v2.6/me/messages',
+//     qs: {
+//       access_token: "EAABqFngJfVgBAFKJKQ0IQdITNSgHMnVuiwG74Ayg1cokgwZCGkigCf5FiFNTaHEdlod4kUCbg5e0lq0m7fK6tsrZAlLYddR1X854XZAXgt1M6CttPXZBvQtTdgd6HoGOeRwWphebKXiGXWCx5M0B3kh5ZAMPU5EeJAyn6quo6HlUGJX4f45Rd",
+//     },
+//     method: 'POST',
+//     json: {
+//       recipient: {
+//         id: senderId
+//       },
+//       message: {
+//         text: message,
+//         "quick_replies":[
+//           {
+//             "content_type":"text",
+//             "title":"java",
+//             "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
+//             "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
+//           },
+//           {
+//             "content_type":"text"
+//             "title":"PHP + LARAVEL",
+//             "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
+//             "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
+//           },
+//           {
+//             "content_type":"text",
+//             "title":"C++",
+//             "payload":"<POSTBACK_PAYLOAD>"
+//           }
+//         ]
+//       },
+//     }
+//   });
+// }
 // Gửi thông tin tới REST API để trả lời
 
 
@@ -113,7 +113,14 @@ function sendMessage(senderId, message) {
         id: senderId
       },
       message: {
-        text: message
+        text: message,
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "url": "http://zent.edu.vn/khoa-hoc/",
+            "is_reusable": true
+          }
+        }
       },
     }
   });
