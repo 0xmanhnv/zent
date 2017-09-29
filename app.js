@@ -61,7 +61,7 @@ app.post('/webhook',function(req, res) {
 function sendMessage(senderId, message) {
 
   var search = [
-      "quick_replies":[
+      quick_replies:[
           {
             "content_type":"text",
             "title":"java",
