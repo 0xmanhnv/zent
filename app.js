@@ -71,13 +71,22 @@ function sendMessage(senderId, message) {
       },
       message: {
         text: message,
-        "attachments":[
-        {
-          "type":"fallback",
-          "payload":null,
-          "title":"<TITLE_OF_THE_URL_ATTACHMENT>",
-          "URL":"http://zent.edu.vn/khoa-hoc/",
-        }]
+        "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Search",
+        "payload":"<POSTBACK_PAYLOAD>",
+        "image_url":"http://example.com/img/red.png"
+      },
+      {
+        "content_type":"location"
+      },
+      {
+        "content_type":"text",
+        "title":"Something Else",
+        "payload":"<POSTBACK_PAYLOAD>"
+      }
+    ]
       },
     }
   });
