@@ -45,6 +45,7 @@ app.post('/webhook',function(req, res) {
           // In tin nhắn người dùng
           // console.log(text); 
           if(text.indexOf("khoa hoc") != -1){
+            btn(senderId);
           	sendMessage(senderId, "http://zent.edu.vn/khoa-hoc/");
           }else{
           	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
@@ -95,6 +96,63 @@ app.post('/webhook',function(req, res) {
 //   });
 // }
 // Gửi thông tin tới REST API để trả lời
+
+
+function btn(senderId){
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {
+      access_token: "EAABqFngJfVgBAFKJKQ0IQdITNSgHMnVuiwG74Ayg1cokgwZCGkigCf5FiFNTaHEdlod4kUCbg5e0lq0m7fK6tsrZAlLYddR1X854XZAXgt1M6CttPXZBvQtTdgd6HoGOeRwWphebKXiGXWCx5M0B3kh5ZAMPU5EeJAyn6quo6HlUGJX4f45Rd",
+    },
+    method: 'POST',
+    json: {
+      recipient: {
+        id: senderId
+      },
+       "persistent_menu":[
+        {
+          "locale":"default",
+          "composer_input_disabled":true,
+          "call_to_actions":[
+            {
+              "title":"My Account",
+              "type":"nested",
+              "call_to_actions":[
+                {
+                  "title":"Pay Bill",
+                  "type":"postback",
+                  "payload":"PAYBILL_PAYLOAD"
+                },
+                {
+                  "title":"History",
+                  "type":"postback",
+                  "payload":"HISTORY_PAYLOAD"
+                },
+                {
+                  "title":"Contact Info",
+                  "type":"postback",
+                  "payload":"CONTACT_INFO_PAYLOAD"
+                }
+              ]
+            },
+            {
+              "type":"web_url",
+              "title":"Latest News",
+              "url":"http://petershats.parseapp.com/hat-news",
+              "webview_height_ratio":"full"
+            }
+          ]
+        },
+        {
+          "locale":"zh_CN",
+          "composer_input_disabled":false
+        }
+      ]
+    }
+  });
+}
+
+
 function sendMessage(senderId, message) {
 
   request({
