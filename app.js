@@ -74,9 +74,9 @@ function sendMessage(senderId, message) {
         "quick_replies":[
           {
             "content_type":"text",
-            "title":"Search",
+            "title":"java",
             "payload":"<POSTBACK_PAYLOAD>",
-            "image_url":"http://example.com/img/red.png"
+            "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
           },
           {
             "content_type":"location"
@@ -85,14 +85,6 @@ function sendMessage(senderId, message) {
             "content_type":"text",
             "title":"Something Else",
             "payload":"<POSTBACK_PAYLOAD>"
-          }
-        ],
-         "buttons":[
-          {
-            "type":"web_url",
-            "url":"https://petersfancyapparel.com/classic_white_tshirt",
-            "title":"View Item",
-            "webview_height_ratio": "compact"
           }
         ]
       },
