@@ -72,21 +72,29 @@ function sendMessage(senderId, message) {
       message: {
         text: message,
         "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Search",
-        "payload":"<POSTBACK_PAYLOAD>",
-        "image_url":"http://example.com/img/red.png"
-      },
-      {
-        "content_type":"location"
-      },
-      {
-        "content_type":"text",
-        "title":"Something Else",
-        "payload":"<POSTBACK_PAYLOAD>"
-      }
-    ]
+          {
+            "content_type":"text",
+            "title":"Search",
+            "payload":"<POSTBACK_PAYLOAD>",
+            "image_url":"http://example.com/img/red.png"
+          },
+          {
+            "content_type":"location"
+          },
+          {
+            "content_type":"text",
+            "title":"Something Else",
+            "payload":"<POSTBACK_PAYLOAD>"
+          }
+        ],
+         "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://petersfancyapparel.com/classic_white_tshirt",
+            "title":"View Item",
+            "webview_height_ratio": "compact"
+          }
+        ]
       },
     }
   });
