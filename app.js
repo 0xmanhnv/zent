@@ -90,7 +90,7 @@ function sendMessage(senderId, message) {
       },
       message: {
         text: message,
-        search
+        "quick_replies": search["quick_replies"]
         // "quick_replies":[
         //   {
         //     "content_type":"text",
