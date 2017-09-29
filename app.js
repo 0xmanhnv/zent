@@ -59,6 +59,26 @@ app.post('/webhook',function(req, res) {
 
 // Gửi thông tin tới REST API để trả lời
 function sendMessage(senderId, message) {
+
+  var search = array(
+    "quick_replies":[
+        {
+          "content_type":"text",
+          "title":"java",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
+          "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
+        },
+        {
+          "content_type":"PHP + LARAVEL"
+        },
+        {
+          "content_type":"text",
+          "title":"C++",
+          "payload":"<POSTBACK_PAYLOAD>"
+        }
+      ]
+  );
+
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
     qs: {
@@ -71,22 +91,23 @@ function sendMessage(senderId, message) {
       },
       message: {
         text: message,
-        "quick_replies":[
-          {
-            "content_type":"text",
-            "title":"java",
-            "payload":"<POSTBACK_PAYLOAD>",
-            "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
-          },
-          {
-            "content_type":"location"
-          },
-          {
-            "content_type":"text",
-            "title":"Something Else",
-            "payload":"<POSTBACK_PAYLOAD>"
-          }
-        ]
+        search
+        // "quick_replies":[
+        //   {
+        //     "content_type":"text",
+        //     "title":"java",
+        //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
+        //     "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
+        //   },
+        //   {
+        //     "content_type":"PHP + LARAVEL"
+        //   },
+        //   {
+        //     "content_type":"text",
+        //     "title":"C++",
+        //     "payload":"<POSTBACK_PAYLOAD>"
+        //   }
+        // ]
       },
     }
   });
