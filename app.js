@@ -114,16 +114,16 @@ function sendMessage(senderId, message) {
         "quick_replies":[
           {
             "content_type":"text",
-            "title":"java",
+            "title":"Search",
             "payload":"<POSTBACK_PAYLOAD>",
-            "image_url":"https://itphutran.com/wp-content/uploads/2017/02/lay-duong-dan-mot-file.jpg"
+            "image_url":"http://example.com/img/red.png"
           },
           {
-            "content_type":"text"
+            "content_type":"location"
           },
           {
             "content_type":"text",
-            "title":"C++",
+            "title":"Something Else",
             "payload":"<POSTBACK_PAYLOAD>"
           }
         ]
