@@ -44,8 +44,8 @@ app.post('/webhook',function(req, res) {
           var text = message.message.text;
           // In tin nhắn người dùng
           // console.log(text); 
-          if(text == "hi"){
-          	sendMessage(senderId, "Cảm ơn bạn đã nhắn tin cho chúng tôi , chúng tôi sẽ cố gắng liên hệ lại cho bạn sớm nhất có thể!");
+          if(text.search("khoa hoc")){
+          	sendMessage(senderId, "http://zent.edu.vn/khoa-hoc/");
           }else{
           	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
           }
