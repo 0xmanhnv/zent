@@ -5,6 +5,7 @@ var request = require("request");
 var app = express();
 var port = process.env.PORT || 8080;
 
+
 // var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 app.use(logger('dev'));
@@ -18,7 +19,7 @@ app.use(bodyParser.urlencoded({
 var server = require('http').Server(app);
 
 app.get('/', (req, res) => {
-	sendMessage("100004067117030", "gui tu dong");
+	// sendMessage("100004067117030", "gui tu dong");
   res.send("Home page. Server running okay.");
 });
 
@@ -61,7 +62,7 @@ function sendMessage(senderId, message) {
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
     qs: {
-      access_token: "EAABqFngJfVgBAD2Xl4c9ZCh0m4ht65AKTehuteeBZCv2GJ8kLISTfu8Ty7he7p2yNu5cWNe6iLmADagcmZCN1oovZCvQ1IITAaXG2lZA8ZCnEQ2YSzpDd0ctuW41ZAyqxS0nFuNITW6YcvemIxWvtSqOqh34eTlIksxwCIG5i9Nz36DyhWdCHTJ",
+      access_token: "EAABqFngJfVgBAB6QGRnVdFwGQbnRPOKBeXgbwM1d4iyOLnZC7awbHNs607DeSSrS6PwGwJaHhCMRv7SjEseFc8FagrlUQpuGJoDDpJDvefB5r1KJN8O5wPE4bFacJwigF7hUnZBASCyYGdwLELxePlPnbScZA74OET49mE2tnHiScKNXmHB",
     },
     method: 'POST',
     json: {
