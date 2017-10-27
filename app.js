@@ -42,9 +42,9 @@ app.post('/webhook',function(req, res) {
       if (message.message) {
         // If user send text
         if (message.message.text) {
-          var text = message.message.text;
+          var text_chat = message.message.text;
 
-          request("http://www.simsimi.com/getRealtimeReq?uuid=UwmPMKoqosEETKleXWGOJ6lynN1TQq18wwvrmCy6IRt&lc=vn&ft=1&reqText="+encodeURI(text)+"&status=W",
+          request("http://www.simsimi.com/getRealtimeReq?uuid=UwmPMKoqosEETKleXWGOJ6lynN1TQq18wwvrmCy6IRt&lc=vn&ft=1&reqText="+encodeURI(text_chat)+"&status=W",
             function(error, response, body) {
           
               if (error) return ;
