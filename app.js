@@ -50,7 +50,7 @@ app.post('/webhook',function(req, res) {
            function(error, response, body) {
             
             if (error) return ;
-            if (body.indexOf("502 Bad Gateway")> 0 || body.indexOf("respSentence") <0 ) return ;
+            // if (body.indexOf("502 Bad Gateway")> 0 || body.indexOf("respSentence") <0 ) return ;
              
 
               var text = JSON.parse(body);
@@ -62,7 +62,7 @@ app.post('/webhook',function(req, res) {
           
                 sendMessage(senderId, ans);
         
-               console.log("       ans:"+ans);
+               // console.log("       ans:"+ans);
             }
           });
 
