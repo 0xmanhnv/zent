@@ -30,6 +30,10 @@ app.get('/webhook', function(req, res) {
   res.send('Error, wrong validation token');
 });
 
+// app.get('/teach', function(){
+
+// });
+
 // Xử lý khi có người nhắn tin cho bot
 app.post('/webhook',function(req, res) {
 
@@ -45,7 +49,7 @@ app.post('/webhook',function(req, res) {
           var text_chat = message.message.text;
           // sendMessage(senderId, "Tui là bot đây: " + text_chat + " thang " + senderId + " a!");
 
-          request("http://sandbox.api.simsimi.com/request.p?key=e0946fdb-0afb-4e2e-b688-77d6abef3817&lc=en&ft=1.0&text="+encodeURI(text_chat),
+          request("http://sandbox.api.simsimi.com/request.p?key=e0946fdb-0afb-4e2e-b688-77d6abef3817&lc=vn&ft=1.0&text="+encodeURI(text_chat),
 
            function(error, response, body) {
             
@@ -61,17 +65,8 @@ app.post('/webhook',function(req, res) {
                 var ans=  text.response;
           
                 sendMessage(senderId, ans);
-        
-               // console.log("       ans:"+ans);
             }
           });
-
-
-          // if(text.indexOf("khóa học") != -1 || text.indexOf("khoa hoc") != -1 || text.indexOf("khóa HỌC") != -1){
-          // 	sendKhoaHoc(senderId, "Hiện tại Zent có những khóa học như sau");
-          // }else{
-          // 	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
-          // }
         }
       }
     }
