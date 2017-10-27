@@ -43,11 +43,32 @@ app.post('/webhook',function(req, res) {
         // If user send text
         if (message.message.text) {
           var text = message.message.text;
-          if(text.indexOf("khóa học") != -1 || text.indexOf("khoa hoc") != -1 || text.indexOf("khóa HỌC") != -1){
-          	sendKhoaHoc(senderId, "Hiện tại Zent có những khóa học như sau");
-          }else{
-          	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
-          }
+
+          request("http://www.simsimi.com/getRealtimeReq?uuid=UwmPMKoqosEETKleXWGOJ6lynN1TQq18wwvrmCy6IRt&lc=vn&ft=1&reqText="+encodeURI(text)+"&status=W",
+            function(error, response, body) {
+          
+              if (error) return ;
+              if (body.indexOf("502 Bad Gateway")> 0 || body.indexOf("respSentence") <0 ) return ;
+             
+
+              text = JSON.parse(body);
+              if (text.status == "200")
+              {
+
+                var ans=  text.respSentence;
+          
+                api.sendMessage(ans, senderId)
+        
+               console.log("       ans:"+ans);
+              }
+            });
+
+          
+          // if(text.indexOf("khóa học") != -1 || text.indexOf("khoa hoc") != -1 || text.indexOf("khóa HỌC") != -1){
+          // 	sendKhoaHoc(senderId, "Hiện tại Zent có những khóa học như sau");
+          // }else{
+          // 	sendMessage(senderId, "Tui là bot đây: " + text + " thang " + senderId + " a!");
+          // }
         }
       }
     }
