@@ -43,25 +43,28 @@ app.post('/webhook',function(req, res) {
         // If user send text
         if (message.message.text) {
           var text_chat = message.message.text;
-          sendMessage(senderId, "Tui là bot đây: " + text_chat + " thang " + senderId + " a!");
-          // request("http://www.simsimi.com/getRealtimeReq?uuid=UwmPMKoqosEETKleXWGOJ6lynN1TQq18wwvrmCy6IRt&lc=vn&ft=1&reqText="+encodeURI(text_chat)+"&status=W",
-          //   function(error, response, body) {
-          
-          //     if (error) return ;
-          //     if (body.indexOf("502 Bad Gateway")> 0 || body.indexOf("respSentence") <0 ) return ;
+          // sendMessage(senderId, "Tui là bot đây: " + text_chat + " thang " + senderId + " a!");
+
+          request("http://sandbox.api.simsimi.com/request.p?key=e0946fdb-0afb-4e2e-b688-77d6abef3817&lc=en&ft=1.0&text="+encodeURI(text_chat),
+
+           function(error, response, body) {
+            
+            if (error) return ;
+            if (body.indexOf("502 Bad Gateway")> 0 || body.indexOf("respSentence") <0 ) return ;
              
 
-          //     var text = JSON.parse(body);
-          //     if (text.status == "200")
-          //     {
+              var text = JSON.parse(body);
+              console.log(body);
+              if (text.result == "100")
+              {
 
-          //       var ans=  text.respSentence;
+                var ans=  text.response;
           
-          //       sendMessage(senderId, ans);
+                sendMessage(senderId, ans);
         
-          //      console.log("       ans:"+ans);
-          //     }
-          // });
+               console.log("       ans:"+ans);
+            }
+          });
 
 
           // if(text.indexOf("khóa học") != -1 || text.indexOf("khoa hoc") != -1 || text.indexOf("khóa HỌC") != -1){
