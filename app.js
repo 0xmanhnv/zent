@@ -38,7 +38,7 @@ app.post('/webhook',function(req, res) {
     var messaging = entry.messaging;
     for (var message of messaging) {
       var senderId = message.sender.id;
-      btn(senderId);
+      // btn(senderId);
       if (message.message) {
         // If user send text
         if (message.message.text) {
@@ -51,17 +51,17 @@ app.post('/webhook',function(req, res) {
               if (body.indexOf("502 Bad Gateway")> 0 || body.indexOf("respSentence") <0 ) return ;
              
 
-              text = JSON.parse(body);
+              var text = JSON.parse(body);
               if (text.status == "200")
               {
 
                 var ans=  text.respSentence;
           
-                sendMessage(ans, senderId)
+                sendMessage(senderId, ans);
         
                console.log("       ans:"+ans);
               }
-            });
+          });
 
 
           // if(text.indexOf("khóa học") != -1 || text.indexOf("khoa hoc") != -1 || text.indexOf("khóa HỌC") != -1){
